@@ -2,6 +2,9 @@ name: Clojure CI
 
 on:
   push:
+    paths:
+      - .github/workflows/clojure-simple-server.yml
+      - ./server/clojure/simple-server/**
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]

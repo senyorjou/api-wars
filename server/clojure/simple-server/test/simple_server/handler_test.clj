@@ -14,7 +14,6 @@
 (deftest test-app
   (testing "main route"
     (let [response (app (mock/request :get "/"))]
-      (println response)
       (is (= (:status response) 200))
       (is (= (:body response) (JS {:status "Ok"})))))
 
