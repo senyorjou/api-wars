@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./server/clojure/simple-server
     steps:
-      working-directory: ./server/clojure/simple-server
     - uses: actions/checkout@v3
     - name: Install dependencies
       run: lein deps
