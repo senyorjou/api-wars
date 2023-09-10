@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-clojure-simple-server-${{ hashFiles('**/project.clj') }}
+        key: ${{ runner.os }}-clojure-simple-server-${{ hashFiles('./project.clj') }}
         restore-keys: |
           ${{ runner.os }}-clojure-simple-server
 
