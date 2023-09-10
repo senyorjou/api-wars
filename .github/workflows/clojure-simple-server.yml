@@ -36,8 +36,5 @@ jobs:
     - name: Run tests
       run: lein test
 
-    - name: Build docker image
-      run: docker buildx build -t senyorjou/api-wars-clojure-simple-server .
-
-    - name: Push docker image
-      run: docker push senyorjou/api-wars-clojure-simple-server .
+    - name: Build docker && push image
+      run: docker buildx build --push -t senyorjou/api-wars-clojure-simple-server .
