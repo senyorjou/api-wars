@@ -3,11 +3,17 @@ name: Clojure simple-server
 on:
   push:
     paths:
-      - .github/workflows/clojure-simple-server.yml
-      - ./server/clojure/simple-server/**
-    branches: [ "main" ]
+      - '.github/workflows/clojure-simple-server.yml'
+      - './server/clojure/simple-server/**'
+    branches:
+      - main
+
   pull_request:
-    branches: [ "main" ]
+    paths:
+      - '.github/workflows/clojure-simple-server.yml'
+      - './server/clojure/simple-server/**'
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,7 +23,17 @@ jobs:
         working-directory: ./server/clojure/simple-server
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
+
+    - name: Cache lein project dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-clojure-simple-server-${{ hashFiles('**/project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-clojure-simple-server
+
+    -name: Install dependencies
       run: lein deps
+
     - name: Run tests
       run: lein test
