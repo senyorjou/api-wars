@@ -8,7 +8,7 @@
   (:gen-class))
 
 
-(def status-ok "Ok")
+(def status-ok "OK")
 
 
 (defn build-url [page]

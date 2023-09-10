@@ -15,7 +15,7 @@
   (testing "main route"
     (let [response (app (mock/request :get "/"))]
       (is (= (:status response) 200))
-      (is (= (:body response) (JS {:status "Ok"})))))
+      (is (= (:body response) (JS {:status "OK"})))))
 
   (testing "not-found route"
     (let [response (app (mock/request :get "/invalid"))]
