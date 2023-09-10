@@ -32,7 +32,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-clojure-simple-server
 
-    -name: Install dependencies
+    - name: Install dependencies
       run: lein deps
 
     - name: Run tests
