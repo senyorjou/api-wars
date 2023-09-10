@@ -40,4 +40,4 @@ jobs:
       run: docker buildx build -t senyorjou/api-wars-clojure-simple-server .
 
     - name: Push docker image
-      run: docker buildx build -t senyorjou/api-wars-clojure-simple-server .
+      run: docker push senyorjou/api-wars-clojure-simple-server .
