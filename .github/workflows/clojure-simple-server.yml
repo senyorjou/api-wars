@@ -28,12 +28,16 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-clojure-simple-server-${{ hashFiles('./project.clj') }}
-        restore-keys: |
-          ${{ runner.os }}-clojure-simple-server
+        key: m2-clojure-simple-server-${{ hashFiles('./project.clj') }}
 
     - name: Install dependencies
       run: lein deps
 
     - name: Run tests
       run: lein test
+
+    - name: Build docker image
+      run: docker buildx build -t senyorjou/api-wars-clojure-simple-server .
+
+    - name: Push docker image
+      run: docker buildx build -t senyorjou/api-wars-clojure-simple-server .
