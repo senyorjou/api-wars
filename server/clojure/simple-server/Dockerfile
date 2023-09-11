@@ -1,4 +1,4 @@
-FROM clojure:temurin-17-lein-bullseye-slim AS builder
+FROM senyorjou/api-wars-clojure-simple-server-base AS builder
 
 WORKDIR /app
 
