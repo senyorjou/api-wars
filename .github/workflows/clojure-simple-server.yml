@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - '.github/workflows/clojure-simple-server.yml'
-      - 'server/clojure/simple-server/**'
+      - './server/clojure/simple-server/**'
     branches:
       - main
 
   pull_request:
     paths:
       - '.github/workflows/clojure-simple-server.yml'
-      - 'server/clojure/simple-server/**'
+      - './server/clojure/simple-server/**'
     branches:
       - main
 
@@ -28,12 +28,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: m2-clojure-simple-server-${{ hashFiles('./server/clojure/simple-server/project.clj') }}
-
-
-
-    - name: Peek
-      run: ls -lah
+        key: m2-clojure-simple-server-base-${{ hashFiles('./server/clojure/simple-server/project.clj') }}
 
     - name: Install dependencies
       run: lein deps
@@ -48,4 +43,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build docker && push image
-      run: docker buildx build --push -t senyorjou/api-wars-clojure-simple-server .
+      run: |
+        docker buildx build --push
+        -t senyorjou/api-wars-clojure-simple-server-base
+        -f ./Dcokerfile.base .

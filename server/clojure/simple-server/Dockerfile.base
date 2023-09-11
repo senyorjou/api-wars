@@ -1,0 +1,7 @@
+FROM clojure:temurin-17-lein-bullseye-slim AS builder
+
+WORKDIR /app
+
+COPY project.clj .
+
+RUN lein deps
