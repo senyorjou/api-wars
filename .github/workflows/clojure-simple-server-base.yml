@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - '.github/workflows/clojure-simple-server-base.yml'
-      - './server/clojure/simple-server/project.clj'
+      - 'server/clojure/simple-server/project.clj'
     branches:
       - main
 
   pull_request:
     paths:
       - '.github/workflows/clojure-simple-server-base.yml'
-      - './server/clojure/simple-server/project.clj'
+      - 'server/clojure/simple-server/project.clj'
     branches:
       - main
 
