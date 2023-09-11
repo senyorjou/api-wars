@@ -6,6 +6,7 @@
                  [org.clojure/data.json "2.4.0"]
                  [compojure "1.7.0"]
                  [clj-http "3.12.3"]
+                 [org.clj-commons/hickory "0.7.3"]
                  [ring/ring-defaults "0.3.4"]
                  [ring/ring-json "0.5.1"]]
   :plugins [[lein-ring "0.12.5"]]
