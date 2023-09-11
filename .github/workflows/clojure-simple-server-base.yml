@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: ~/.m2/repository
-        key: m2-clojure-simple-server-base-${{ hashFiles('server/clojure/simple-server/project.clj') }}
+        key: m2-clojure-simple-server-base-${{ hashFiles('./server/clojure/simple-server/project.clj') }}
 
     - name: Install dependencies
       run: lein deps
