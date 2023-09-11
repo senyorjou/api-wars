@@ -28,7 +28,12 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-clojure-simple-server-${{ hashFiles('**/project.clj') }}
+        key: m2-clojure-simple-server-${{ hashFiles('./server/clojure/simple-server/project.clj') }}
+
+
+
+    - name: Peek
+      run: ls -lah
 
     - name: Install dependencies
       run: lein deps
