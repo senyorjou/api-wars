@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/clojure-simple-server.yml'
-      - './server/clojure/simple-server/**'
+      - 'server/clojure/simple-server/**'
     branches:
       - main
 
