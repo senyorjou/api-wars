@@ -35,6 +35,7 @@
     (if (= (:status rsp) 200)
       (response {:html (subs (:body rsp) 0 100)
                  :page page
+                 :size (count (:body rsp))
                  :status status-ok})
       (err-response rsp))))
 
