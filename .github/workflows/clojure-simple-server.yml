@@ -44,6 +44,6 @@ jobs:
 
     - name: Build docker && push image
       run: |
-        docker buildx build --push
-        -t senyorjou/api-wars-clojure-simple-server-base
+        docker buildx build --push \
+        -t senyorjou/api-wars-clojure-simple-server-base \
         -f ./Dockerfile.base .
