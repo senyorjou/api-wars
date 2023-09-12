@@ -2,11 +2,11 @@ FROM senyorjou/api-wars-clojure-simple-server-base AS builder
 
 WORKDIR /app
 
-COPY project.clj .
+COPY . .
 
 RUN lein deps
 
-COPY src/ resources/ ./
+RUN lein test
 
 RUN lein ring uberjar
 
