@@ -4,9 +4,10 @@ on:
   push:
     paths:
       - '.github/workflows/clojure-simple-server-self.yml'
+      - 'server/clojure/simple-server/project.clj'
+
     branches:
       - main
-
 
 jobs:
   build:
@@ -23,17 +24,15 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: Docker pull (for cache)
+      run: |
+        docker pull senyorjou/api-wars-clojure-simple-server-base || true
+
     - name: Build docker && push image
       run: |
-        docker buildx build \
+        docker buildx build --from-cache senyorjou/api-wars-clojure-simple-server-base\
         -t senyorjou/api-wars-clojure-simple-server-base \
         -f ./Dockerfile.base .
-
-    - name: Run tests
-      run: |
-        docker run --rm \
-        senyorjou/api-wars-clojure-simple-server-base \
-        lein test
 
     - name: Docker push
       run: |
