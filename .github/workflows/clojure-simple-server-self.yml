@@ -30,7 +30,7 @@ jobs:
 
     - name: Build docker && push image
       run: |
-        docker buildx build --cache-from senyorjou/api-wars-clojure-simple-server-base\
+        docker buildx build --cache-from senyorjou/api-wars-clojure-simple-server-base \
         -t senyorjou/api-wars-clojure-simple-server-base \
         -f ./Dockerfile.base .
 
