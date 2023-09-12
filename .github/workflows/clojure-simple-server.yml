@@ -32,8 +32,14 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: Docker pull (for cache)
+      run: |
+        docker pull senyorjou/api-wars-clojure-simple-server-base || true
+
     - name: Run tests, build docker && push image
       run: |
-        docker buildx build --push \
+        docker buildx build \
+        --cache-from senyorjou/api-wars-clojure-simple-server-base \
+        --push \
         -t senyorjou/api-wars-clojure-simple-server \
         -f ./Dockerfile .
