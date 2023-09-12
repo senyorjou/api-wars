@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: senyorjou/api-wars-clojure-simple-server-base
     defaults:
       run:
         working-directory: ./server/clojure/simple-server
