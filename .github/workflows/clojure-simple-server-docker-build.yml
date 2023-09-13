@@ -35,6 +35,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: $APP_IMAGE:latest
+        tags: "$APP_IMAGE:latest"
         cache-from: type=gha
         cache-to: type=gha,mode=max
