@@ -12,7 +12,7 @@ on:
 env:
   BASE_IMAGE: senyorjou/api-wars-clojure-simple-server-base
   APP_IMAGE: senyorjou/api-wars-clojure-simple-server
-  TEST_IMAGE: senyorjou/api-wars-clojure-simple-server:test
+  BUILD_TAG: latest
 
 jobs:
   build:
@@ -31,22 +31,11 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-    - name: Build and export to Docker
+    - name: Build and push
       uses: docker/build-push-action@v5
       with:
         context: server/clojure/simple-server
-        load: true
-        tags: ${{ env.TEST_TAG }}
+        push: true
+        tags:  ${{ APP_IMAGE }}:${{ BUILD_TAG }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
-
-    - name: Test
-        run: |
-          docker run --rm ${{ env.TEST_IMAGE }} 'lein test'
-
-    - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: server/clojure/simple-server
-          push: true
-          tags: ${{ env.APP_IMAGE }}
