@@ -36,6 +36,6 @@ jobs:
       with:
         context: server/clojure/simple-server
         push: true
-        tags:  ${{ APP_IMAGE }}:${{ BUILD_TAG }}
+        tags:  ${{ env.APP_IMAGE }}:${{ env.BUILD_TAG }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
