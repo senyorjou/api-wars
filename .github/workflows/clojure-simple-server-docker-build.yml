@@ -35,6 +35,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: "$APP_IMAGE:latest"
+        tags:  senyorjou/api-wars-clojure-simple-server:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
