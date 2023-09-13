@@ -17,6 +17,11 @@ on:
     branches:
       - main
 
+
+env:
+  BASE_IMAGE: senyorjou/api-wars-clojure-simple-server-base
+  APP_IMAGE: senyorjou/api-wars-clojure-simple-server
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,12 +39,12 @@ jobs:
 
     - name: Docker pull (for cache)
       run: |
-        docker pull senyorjou/api-wars-clojure-simple-server-base || true
+        docker pull $BASE_IMAGE || true
 
     - name: Run tests, build docker && push image
       run: |
         docker buildx build \
-        --cache-from senyorjou/api-wars-clojure-simple-server-base \
+        --cache-from $BASE_IMAGE \
         --push \
-        -t senyorjou/api-wars-clojure-simple-server \
+        -t $APP_IMAGE \
         -f ./Dockerfile .
